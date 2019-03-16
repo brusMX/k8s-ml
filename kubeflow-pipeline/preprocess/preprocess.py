@@ -17,10 +17,6 @@ def download_unzip_data(input_dir,url):
         zip_ref.extractall(os.path.join(input_dir))
 
 
-    
-    
-
-
 def save_data(processed_data, output_dir):
     (x_train, y_train), (x_test, y_test) = processed_data
     if not os.path.isdir(output_dir):
@@ -67,7 +63,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     download_unzip_data(args.input_dir,IMAGES)
-    get_dataset(args.data, args.target, args.img_size)
+    get_dataset(os.path.join(args.input_dir, args.data), args.target, args.img_size)
     
     print('input_dir: {}'.format(args.input_dir))
     print('output_dir: {}'.format(args.output_dir))
