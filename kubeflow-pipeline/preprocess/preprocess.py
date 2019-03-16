@@ -26,11 +26,6 @@ def save_data(processed_data, output_dir):
     if not os.path.isdir(output_dir):
         os.mkdir(output_dir)
     np.save(os.path.join(output_dir, 'x_train.npy'), x_train)
-    np.save(os.path.join(output_dir, 'y_train.npy'), y_train)
-    np.save(os.path.join(output_dir, 'x_test.npy'), x_test)
-    np.save(os.path.join(output_dir, 'y_test.npy'), y_test)
-    np.save(   )
-
 
 
 
@@ -47,6 +42,7 @@ def get_dataset(base_path, file, image_size):
                 assert img.shape[2] == 3, "Invalid channel count"
                 # write out good images
                 f.write('{}\n'.format(item))
+                # replace with np.save
             except Exception as e:
                 bad.append(item)
                 print('{}\n{}\n'.format(e, item))
@@ -62,9 +58,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
     description='CNN Training for Image Recognition. Provide  input dir, output dir, data, dataset name and imagesize')
     parser.add_argument('--input_dir',
-                        help='provide input directory')
+                        help='provide input directory', default='/scripts')
     parser.add_argument('--output_dir',
-                        help='provide output directory')
+                        help='provide output directory', default='data')
     parser.add_argument('-d', '--data', help='directory to training and test data', default='data')
     parser.add_argument('-t', '--target', help='target file to hold good data', default='dataset.txt')
     parser.add_argument('-i', '--img_size', help='target image size to verify', default=160, type=int)

@@ -6,5 +6,6 @@ RUN pip install wget pathlib
 
 COPY preprocess.py /scripts/preprocess.py
 COPY helpers.py /scripts/helpers.py
+RUN mkdir /scripts/data
 
-ENTRYPOINT [ "python","/scripts/preprocess.py" ]
+ENTRYPOINT [ "python","/scripts/preprocess.py"]
