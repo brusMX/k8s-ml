@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.9.0
+FROM tensorflow/tensorflow:1.15.4
 
 WORKDIR /
 
